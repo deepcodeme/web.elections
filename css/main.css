@@ -1,0 +1,584 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Style Content-Main */
+
+#content-main{
+    padding: 75px;
+}
+
+#content-group:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+#content-left{
+    width: 33.33333%;
+    float: left;
+}
+
+#content-left img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#content-right{
+    width: 60%;
+    float: left;
+    padding-left: 25px;
+}
+
+#xlarge-title{
+    font-size: 50px;
+    color: dimgray;
+    font-weight: bold;
+}
+
+#large{
+    font-size: 20px;
+    color: lightseagreen;
+}
+
+#txt-description{
+    font-size: 17px;
+    text-align: justify;
+    color: dimgray;
+    padding-bottom: 10px;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#btn-try-server, #btn-try-client{
+    padding: 7.5px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    border-radius: 4.5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#btn-try-server{
+    background-color: rgb(255, 196, 0);
+    border: 1px solid rgb(255, 196, 0);
+}
+
+#btn-try-client{
+    background-color: rgb(56, 216, 208);
+    border: 1px solid rgb(56, 216, 208);
+}
+
+#btn-try-server:hover, #btn-try-client:hover{
+    background-color: slateblue;
+    border: 1px solid slateblue;
+    box-shadow: 5px 5px 20px 0px lightgray;
+}
+
+@media screen and (max-width: 1000px)
+{
+    #content-main{
+        padding: 50px;
+    }
+    #xlarge-title{
+        font-size: 35px;
+    }
+    #large{
+        font-size: 25px;
+    }
+    #content-left, #content-right{
+        width: 100%;
+    }
+    #content-right{
+        padding-left: 0;
+        padding-top: 15px;
+    }
+}
+
+    /* Style Content-Card */
+
+#content-main-card{
+    padding: 100px;
+    padding-left: 150px;
+}
+
+#content-card-column
+{
+    width: 25%;
+    float: left;
+    padding: 10px;
+    margin: 25px;
+    background-color: white;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px 0px lightgray;
+    min-height: 300px;
+}
+
+#content-card{
+    padding-top: 25px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#content-card h3{
+    padding-bottom: 50px;
+    color: rgb(56, 216, 208);
+}
+
+#content-card p {
+    color: dimgray;
+    font-size: 14px;
+    font-family: 'century gothic'; 
+}
+@media screen and (max-width: 1000px)
+{
+    #content-main-card{
+        padding-left: 25px;
+    }
+    #content-card-column
+    {   
+        width: 100%;    
+    }
+}
+
+/* ********************************************************************** */
+/* Style SERVER */
+/* ***************************************************************** */
+
+.box{
+    width: 33.33333%;
+    height: 300px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+#content-main-login-server{
+    width: 33.33333%;
+    height: 300px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#content-box-login-server{
+    width: 100%;    
+    height: 100%;
+    background-color:white;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px 0px lightgray;
+}
+
+#content-txt{
+    width: 100%;
+    height: 235px;
+    /* background-color: gray; */
+}
+
+#content-txt #txt-code, #content-txt #txt-code-signup, #txt-code-client{
+    width: 65%;
+    height: 20px;
+    padding: 10px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 100px;
+    left: 0;
+    border: 1px solid lightgray;
+    border-radius: 2.5px;
+    color: dimgray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#content-btn{
+    float: right;
+    padding-right: 50px;
+}
+
+#content-btn button{
+    padding: 10px;
+    background-color: rgb(75, 149, 209);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgb(75, 149, 209);
+    border-radius: 2.5px;
+    cursor: pointer;
+}
+
+#content-btn #btn-signup-server{
+    background-color: rgb(255, 196, 0);
+    border: 1px solid rgb(255, 196, 0);
+}
+
+@media screen and (max-width: 1000px)
+{
+    #content-main-login-server{
+        width: 100%;
+    }
+}
+
+/* Style untuk dashboard-server */
+
+#content-bakcground-dash{
+    width: 100%;
+    height: auto;
+}
+
+#content-back-1
+{
+    background-color: rgb(38, 40, 61);
+}
+
+#content-main-dash-server{
+    padding: 100px;
+}
+
+#content-title-dash-server{
+    width: 100%;
+    height: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color: lightgray;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+#content-row-title-dash-server{
+    padding: 25px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+}
+#content-title-dash-server ul{
+    list-style: none;
+}
+#li-right button{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(47, 255, 238, 0.5);
+    border: 1px solid rgba(47, 255, 238, 0.2);
+    border-radius: 2.5px;
+    padding: 7.5px;
+    cursor: pointer;
+    font-size: 11px;
+}
+#content-title-dash-server ul li{
+    display: inline-block;
+    padding:10px;
+}
+#content-title-dash-server #li-right{
+    display: inline-block;
+    /* float: right; */
+}
+#content-chart-input-server:after
+{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+#content-input-server{
+    float: left;
+    width: 45%;
+    padding: 25px;
+}
+
+#content-input-server #txt-nama-id, #content-input-server #txt-visi-id, #content-input-server #txt-misi-id, #content-input-server #txt-file-id, #content-input-server #btn-input-server{
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+#content-input-server input[type='text'], #content-input-server textarea{
+    border: 1px solid lightgray;
+    border-radius: 2.5px;    
+}
+
+#content-input-server #btn-input-server{
+    background-color: rgba(55, 212, 218, 0.8);
+    border: 1px solid rgba(55, 212, 218, 0.8);
+    border-radius: 2.5px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    width: auto;
+    float: right;
+}
+
+#content-chart-server{
+    width: 45%;
+    float: left;
+    padding-left: 50px;
+}
+
+#content-view-server{
+    width: 100%;
+}
+
+#content-view-server ul{
+    list-style-type: none;
+}
+
+#content-view-server ul li{
+    float: left;
+    width: 25%;
+}
+
+#content-list-server{
+    margin: 5px;
+    padding: 25px;
+    border: 1px solid whitesmoke;
+    box-shadow: 5px 5px 5px 0px lightgray;
+    border-radius: 5px;
+}
+
+#content-list-img-server
+{
+    width: 100%;
+    height: auto;
+}
+
+#content-list-img-server img{
+    display: block;
+    margin: auto;
+    border-radius: 100%;
+}
+
+#content-list-txt-server{
+    text-align: center;
+    padding: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(71, 194, 188);
+}
+
+#content-btn-view-server{
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#content-btn-view-server button{
+    padding: 7.5px;
+    background-color: rgb(72, 140, 196);
+    border: 1px solid rgb(72, 140, 196);
+    border-radius: 2.5px;
+    color: white;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+#content-btn-view-server button:hover{
+    background-color: rgb(230, 240, 89);
+    border: 1px solid rgb(230, 240, 89);
+}
+
+@media screen and (max-width:1200px)
+{
+    #content-chart-server{
+        width: 100%;
+        padding-top: 25px;
+        padding-left: 0;
+    }
+    #content-input-server{
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width:1000px)
+{
+    #content-main-dash-server{
+        padding: 50px;
+    }    
+    #content-view-server ul li{
+        width: 50%;
+    }
+    #content-input-server #txt-nama-id, #content-input-server #txt-visi-id, #content-input-server #txt-misi-id, #content-input-server #txt-file-id{
+        width: 94%;
+    }
+    #content-row-title-dash-server ul li{
+        display: none;
+    }
+}
+
+@media screen and (max-width:650px)
+{
+    #content-main-dash-server{
+        padding: 25px;
+    }    
+    #content-view-server ul li{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:400px)
+{
+    #content-input-server #txt-nama-id, #content-input-server #txt-visi-id, #content-input-server #txt-misi-id, #content-input-server #txt-file-id{
+        width: 92%;
+    }
+}
+
+/**************************************************************************
+Style Card Profile Server
+************************************************************************ */
+
+
+#content-card-server-main{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    position: fixed;
+}
+
+#content-card-server-main #content-card-box-server-main{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 49.5%;
+    height: 550px;
+}
+
+#content-card-row-server-main{
+    padding: 50px;
+}
+
+#content-card-row-server-main #content-card-img-server-main{
+    width: 100%;
+    height: auto;
+}
+
+#content-card-img-server-main img{
+    display: block;
+    margin: auto;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+#content-card-row-server-main #content-card-txt-server-main{
+    padding: 25px;
+}
+
+#txt-card-nama-id, #txt-card-visi-id, #txt-card-misi-id{
+    width: 97.5%;
+    margin-bottom: 5px;
+    padding: 5px;
+    color: dimgray;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid white;
+    border-radius: 2.5px;
+}
+
+#content-card-txt-server-main button{
+    padding: 7.5px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 2.5px;
+    cursor: pointer;
+}
+
+#content-card-txt-server-main #btn-card-exit{
+    border: 1px solid rgb(238, 67, 67);
+    background-color: rgb(238, 67, 67);
+}
+
+#content-card-txt-server-main #btn-card-change
+{
+    border: 1px solid rgb(70, 217, 236);
+    background-color: rgb(70, 217, 236);
+}
+
+@media screen and (max-width:1000px)
+{
+    #content-card-server-main #content-card-box-server-main{
+        width: 100%;
+        height: 455px;
+    }
+    #content-card-row-server-main{
+        padding: 10px;
+    }
+    
+}
+
+#content-main-dash-client{
+    padding: 50px;
+}
+
+#content-row1-dash-client:after{
+    content: '';
+    display: table;
+    clear: both;    
+}
+
+#content-choose-kandidat{
+    width: 100%;
+}
+
+#content-box-kandidat-client{
+    width: 30%;
+    float: left;
+    padding: 10px;
+    padding-bottom: 50px;
+}
+
+#content-img-kandidat-client{
+    width: 100%;
+    height: auto;
+}
+
+#content-img-kandidat-client img{
+    margin: auto;
+    display: block;
+    border-radius: 100%;
+    padding-bottom: 15px;
+}
+
+#content-txt-kandidat-client, #content-btn-pilih-client{
+    width: 70%;
+    margin: auto;
+    display: block;
+}
+
+#content-txt-kandidat-client p{
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: justify;
+}
+
+#txt-xlarge-title p{
+    font-size: 30px;
+    color: lightseagreen;
+    padding-bottom: 10px;
+}
+
+#txt-medium-visi p, #txt-medium-misi p{
+    font-size: 15px;
+    color: gray;
+    padding-bottom: 15px;
+}
+
+#content-btn-pilih-client button{
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(13, 117, 165);
+    color: white;
+    padding: 7.5px;
+    cursor: pointer;
+}
+
+
+
+

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div id="body-vot">
+            
+        </div>
+    </div>
+    <script src="../js/source.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script>
+        $(window).on('load', function(e){
+            $.ajax({
+                url:'/server/api/svot',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    serv: localStorage.getItem('NamaServer'),
+                }),
+                success:function(res){
+                    if(res == "drop" || res == "bug" || res == "empty"){
+                        alert(res);
+                    }else{
+                        let bodyvot = $('#body-vot');
+                        bodyvot.html('');
+                        res.forEach(function(row) {
+                            bodyvot.append('\
+                            <ul class="list-group mt-5">\
+                                <li class="list-group-item">'+row._id+'</li>\
+                            </ul>\
+                            '                     
+                            );
+                        });
+                        window.print();
+                        window.close();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

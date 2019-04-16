@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../css/main.css"> -->
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+      <div class="container">
+        <a class="navbar-brand" href="#">ELECTION</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home</a>
+            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#Modalprofile" id="btn-modal-profile">Server info</a>
+            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#Modaladd" id="btn-modal-add">Candidate</a>
+            <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#Modalvote" id="btn-modal-vote">Voter</a>
+            <a class="nav-item nav-link" href="#" id="btn-logout-server">Exit</a>
+            <!-- <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Logout</a> -->
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="modal fade" id="Modalprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Server Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="body-modal-profile">
+              
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="Modaladd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-secondary" id="exampleModalLabel ">Candidate Add(+)</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <label class="text-secondary">Name</label>
+                <input type="text" id="txt-nama-id" class="form-control mb-2" required>
+                
+                <label class="text-secondary">Vision</label>
+                <textarea id="txt-visi-id" class="form-control" required>
+  
+                </textarea>
+                <small class="form-text text-muted mb-2">Type your vision for share another people.</small>
+                
+                <label class="text-secondary">Mision</label>
+                <textarea id="txt-misi-id" class="form-control" required>
+  
+                </textarea>
+                <small class="form-text text-muted mb-2">Type your mision for share another people.</small>              
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn-input-server">Next</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="Modal-Img" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Candidate Add Image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="frm-add-img">
+                    <label class="text-secondary">Upload your photo</label>
+                    <input type="file" id="txt-file" name="txtFile" required>
+                    <img src="" alt="..." class="img-fluid" style="display:none;" id="img-preview">
+                </form>            
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btn-add-client-img">Save changes</button>
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- modal untuk voter -->
+          <div class="modal fade" id="Modalvote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Voter Add(+)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="voter">
+                
+                <label class="text-secondary"> Lots of voters</label>
+                <input type="text" id="txt-qtyvoter" class="form-control">
+                <small class="form-text text-muted mb-2">Lots of people can use elections.</small>
+                
+                <div class="body-qty">
+                  <p class="text-info"><span id="txt-qty-vot"></span><span> People</span></p>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="btn-add-vot">Create(+)</button>
+                  <button type="button" class="btn btn-dark" id="btn-export-vot">Export</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="container">
+        <div class="row" id="row-body-kandidat">
+          
+        </div>
+      </div>
+  
+        <div class="modal fade" id="Modalvm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Vision And Mision Candidate</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" id="body-vm">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="Modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Candidate Profile</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="body-edit">
+                    
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="btn-edit-profile">Edit</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+    <script src="../js/source.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script>
+
+      function loadServer(){
+        $.ajax({
+            url: '/server/api/load',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+              nama_server : sessionStorage.getItem('NamaServer')  
+            }),
+            success: function(res){
+                console.log(' + Success to load dasboar server '+res);
+                var col = $('#row-body-kandidat');
+                col.html('');
+                res.forEach(function(row) {
+                  col.append('\
+                  <div id="col-body" class="col-md-4 mb-4">\
+                    <div class="card">\
+                      <img src="../upload/'+row.Foto+'" class="card-img-top" alt="...">\
+                      <div class="card-body">\
+                        <h5 class="card-title">'+row.Nama+'</h5>\
+                        <p class="card-text">'+row.Total+'</p>\
+                        <a href="#" class="btn btn-dark" data-toggle="modal" data-target="#Modaledit" onclick="btn_edit_profile(\''+row._id+'\')">Edit</a>\
+                        <a href="#" class="btn btn-secondary"  onclick="btn_del_profile(\''+row._id+'\')">Delete</a>\
+                        <a href="#" class="btn btn-light" data-toggle="modal" data-target="#Modalvm" onclick="btn_more_profile(\''+row._id+'\')">....</a>\
+                      </div>\
+                    </div>\
+                  </div>\
+                ');
+              });
+            }
+          });
+        }
+      
+      $(window).on('load', function(e){
+        if(localStorage.getItem('NamaServer') == null && localStorage.getItem('param-add-img-client') == null){
+          sessionStorage.removeItem('NamaServer');
+          window.location = '/';
+        }
+        else if(localStorage.getItem('NamaServer') != null && localStorage.getItem('param-add-img-client') == null){
+          loadServer();
+        }
+        else if(localStorage.getItem('NamaServer') != null && localStorage.getItem('param-add-img-client') != null){
+          loadServer();
+          $('#Modal-Img').css('overflow-y', 'auto');
+          $('#Modal-Img').modal('show');
+        }
+      });
+    </script>
+    <script src="../js/script.js"></script>
+    <!-- <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+          var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+          s1.async=true;
+          s1.src='https://embed.tawk.to/5c786c25a726ff2eea5a0324/default';
+          s1.charset='UTF-8';
+          s1.setAttribute('crossorigin','*');
+          s0.parentNode.insertBefore(s1,s0);
+        })();
+  </script> -->
+  </body>
+</html>

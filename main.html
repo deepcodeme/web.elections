@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">ELECTION</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#" id="btn-home">Home</a>
+                <a class="nav-item nav-link" href="#" id="btn-try-server-nav">Server</a>
+                <a class="nav-item nav-link" href="#" id="btn-try-client-nav">Client</a>  
+              </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div id="content-group">
+            <div id="content-left">
+                <img src="img/Pemilu.jpg" alt="" width="400" height="400">
+            </div>
+            <div id="content-right">
+                <p id="xlarge-title">Election Application</p><br>
+                <p id="large">Why must use this app?</p>
+                <p id="txt-description">
+                    This app is designed to run on all OS or open source and this application can be flexible
+                    with the design because it can follow the number of candidates inputted and this is the 2nd form
+                    from the previous design, it will be better and more perfect, because of the app developers
+                    has added and resolved all existing problems.
+                </p>
+                <button id="btn-try-server" >Try Server</button>
+                <button id="btn-try-client">Try Client</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <div class="card-deck">
+                    
+                    <div class="card">
+                        <img src="img/urban.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Fun to use</h5>
+                            <p class="card-text text-dark">This application can respond to all 
+                            device sizes from computers, 
+                            tablets, 
+                            mobile phones.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">@Copy-right Reza Andriansyah</small>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="img/Computer.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Easy to use</h5>
+                            <p class="card-text text-dark">This application is designed to make it easier for users to be able to run easily and very portable.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">@Copy-right Reza Andriansyah</small>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="img/Bussiness.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Open Source</h5>
+                            <p class="card-text text-dark">This application can run on all system operations because this application is made with open source package.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">@Copy-right Reza Andriansyah</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>           
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/source.js"></script>
+    <script>
+        $(window).on('load', function(e){
+            
+            if(localStorage.getItem('NamaServer') != null && localStorage.getItem('param-add-img-client') == null){
+                sessionStorage.setItem('NamaServer', localStorage.getItem('NamaServer'));
+                window.location = "/dserv";
+            }
+            else if(localStorage.getItem('NamaServer') != null && localStorage.getItem('param-add-img-client') != null){
+                sessionStorage.setItem('NamaServer', localStorage.getItem('NamaServer'));
+                sessionStorage.setItem('param-add-img-client', localStorage.getItem('param-add-img-client'))
+                window.location = "/dserv";
+            }
+        });
+    </script>
+    <script type="text/javascript" src="./js/bootstrap.js"></script>
+    <script type="text/javascript" src="./js/script.js"></script>
+</body>
+</html>

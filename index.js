@@ -11,15 +11,14 @@ const mongoptions = {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
-    autoIndex: false, // Don't build indexes
-    reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
-    reconnectInterval: 500, // Reconnect every 500ms
-    poolSize: 100, // Maintain up to 10 socket connections
-    // If not connected, return errors immediately rather than waiting for reconnect
+    autoIndex: false,
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 500,
+    poolSize: 100,
     bufferMaxEntries: 0,
-    connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
-    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-    family: 4 // Use IPv4, skip trying IPv6
+    connectTimeoutMS: 10000,
+    socketTimeoutMS: 45000,
+    family: 4 
 };
 
 // var con = mysql.createPool({
@@ -74,7 +73,6 @@ app.get('/cd', function(req,res){
 
 app.post('/server/api/load', function(req, res){
     var param = req.body.nama_server;
-    console.log(param);
     if(param != ""){
         mongo.connect(url, {useNewUrlParser: true}, mongoptions , function(err, konek){
             if(err) throw err;
@@ -91,53 +89,6 @@ app.post('/server/api/load', function(req, res){
         });
     }
 });
-
-// app.get('/server/api/load/:nama_server', function(req, res){
-//     var param = req.params.nama_server;
-//     console.log(param);
-//     if(param != ""){
-//         mongo.connect(url, {useNewUrlParser: true}, mongoptions , function(err, konek){
-//             if(err) throw err;
-//             var data = {
-//                 Server_Code : param
-//             }
-//             konek.db('Pemilu').collection('Kandidat').find(data).toArray(function(err, row){
-//                 if(err) res.send('DROP');
-//                 else{
-//                     res.send(row);
-//                 }
-//                 konek.close();
-//             });
-//         });
-//     }
-// });
-
-// app.get('/server/api/in/:nama_server', function(req, res){
-//     var param = req.params.nama_server;
-//     if(param != ""){
-//         mongo.connect(url, {useNewUrlParser: true}, mongoptions , function(err, konek){
-//             if(err) throw err;
-//             try {
-//                 for(var i = 0;i <= 10000; i++){
-//                     var data = {
-//                         _id : new ObjectId(),
-//                         Nama: "REZA",
-//                         Visi: "OI",
-//                         Misi: "Oi",
-//                         Server_Code : param,
-//                         Total: 0,
-//                         Foto: "MasterPoint.png"
-//                     }
-//                     konek.db('Pemilu').collection('Kandidat').insertMany([data]);
-//                 }
-//                 konek.close();
-//                 res.send('DONE');   
-//             } catch (error) {
-//                 res.send(error);
-//             }
-//         });
-//     }
-// });
 
 app.post('/server/api/addv', function(req, res){
     var server = req.body.serv;
@@ -210,9 +161,8 @@ app.get('/server/api/getv', function(req, res){
 app.post('/server/api/is', function(req, res){
     var id = req.body.id;
     var serv = req.body.serv;
-    console.log(id);
     mongo.connect(url, {useNewUrlParser: true},mongoptions , function(err, konek){
-        if(err) console.log(err); 
+        if(err) console.log("Problem detected from row : 165"); 
         var data = {
             _id: new ObjectId(id),
             Server_Code: serv

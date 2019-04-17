@@ -49,12 +49,11 @@ $('#btn-create-signup-server').on('click', function(e){
         }),
 
         success: function(res){
-            alert(res);
             if(res == "INSERT DROP" || res == "SERVER CODE IS ALREADY" || res == "PLEASE INSERT CODE SERVER FIRST"){
+                alert(res);
                 $('#txt-code-signup').val('');
             }else{
                 $('#txt-code-signup').val('');  
-                console.log(" + Success create new server with status "+res);
                 window.location = '/lserv';
             }
         }
@@ -78,7 +77,6 @@ $('#btn-signin-server').on('click', function(e){
                 alert(res);
             }else{
                 codeServer.val('');
-                console.log(' + Success sign-in to server '+res);
                 sessionStorage.setItem('NamaServer', res);
                 localStorage.setItem('NamaServer', res);
                 window.location = "/dserv";
@@ -132,7 +130,7 @@ $('#btn-input-server').on('click', function(e){
     profile = sessionStorage.getItem('NamaServer');
 
     if(name.val() == "" || visi.val() == "" || misi.val() == ""){
-        alert('silahkan lengkapi terlebih dahulu');
+        alert('Silahkan lengkapi terlebih dahulu');
     }else{
         $.ajax({
             url:'/client/api',
@@ -248,12 +246,9 @@ $('#btn-check-code').on('click', function(e){
                 tkn: token,
             }),
             success: function(res){
-                console.log(res.status);
                 if(res == "Empty" || res == "Server not avalaible" || res == "Token not avalaible"){
-                    console.log(res);
                     $('#txt-token').val('');
                 }else{
-                    console.log(res);
                     $('#txt-token').val('');
                     localStorage.setItem('Token', res);
                     window.location = '/dclie';
@@ -297,7 +292,7 @@ $('#btn-edit-profile').on('click', function(e){
 });
 
 $('#btn-modal-vote').on('click', function(e){
-    let server  = sessionStorage.getItem('NamaServer');
+    var server  = sessionStorage.getItem('NamaServer');
     localStorage.setItem('NamaServer', server);
     $.ajax({
         url:'/server/api/getv',
@@ -358,8 +353,6 @@ $('#btn-add-vot').on('click', function(e){
 
 $('#btn-export-vot').on('click', function(e){
     var txt = $('#txt-qty-vot').text();
-    alert(txt);
-    console.log(txt);
     if(txt != "0" || txt != ""){
         window.open('/vot','_blank');
     }else{
@@ -389,7 +382,6 @@ function btn_del_profile(id){
   }
 
   function btn_more_profile(id){
-      alert(id);
       var id = id;
       var serv = sessionStorage.getItem('NamaServer');
       if(serv == '' || serv == null){
@@ -404,7 +396,6 @@ function btn_del_profile(id){
               serv:serv
           }),
           success: function(res){
-              alert(res);
               if(res == 'DROP'){
                   alert('Gagal meload data lengkap kandidat');
               }else{
@@ -472,11 +463,10 @@ function btn_del_profile(id){
               serv:serv
           }),
           success: function(res){
-              alert(res);
               if(res == 'DROP'){
-                  alert('gagal memilih');
+                  alert('Gagal memilih');
               }else{
-                  alert('berhasil memilih');
+                  alert('Berhasil memilih');
                   window.location = '/';
               }
           }

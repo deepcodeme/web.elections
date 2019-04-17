@@ -23,6 +23,18 @@ $('#btn-signup-server').on('click', function(e){
     window.location = '/sserv';
 });
 
+$('#btn-back-signup').on('click', function(e){
+    window.location = '/lserv';
+});
+
+$('#btn-back-lgns').on('click', function(e){
+    window.location = '/';
+});
+
+$('#btn-back-lgnc').on('click', function(e){
+    window.location = '/';
+});
+
 $('#btn-create-signup-server').on('click', function(e){
     e.preventDefault();
     var NewServer = $('#txt-code-signup');
@@ -40,7 +52,7 @@ $('#btn-create-signup-server').on('click', function(e){
             if(res == "INSERT DROP" || res == "SERVER CODE IS ALREADY" || res == "PLEASE INSERT CODE SERVER FIRST"){
                 $('#txt-code-signup').val('');
             }else{
-                $('#txt-code-signup').val('');
+                $('#txt-code-signup').val('');  
                 console.log(" + Success create new server with status "+res);
                 window.location = '/lserv';
             }

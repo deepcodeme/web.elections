@@ -50,7 +50,7 @@ $('#btn-create-signup-server').on('click', function(e){
 
         success: function(res){
             if(res == "INSERT DROP" || res == "SERVER CODE IS ALREADY" || res == "PLEASE INSERT CODE SERVER FIRST"){
-                alert(res);
+                swal(res);
                 $('#txt-code-signup').val('');
             }else{
                 $('#txt-code-signup').val('');  
@@ -74,7 +74,7 @@ $('#btn-signin-server').on('click', function(e){
         success: function(res){
             if(res== "PLEASE INSERT CODE SERVER FIRST" || res == "UPDATE DROP" || res == "SERVER CODE NOT AVAILABLE" || res == "CODE SERVER ALREADY ACTIVATE"){
                 codeServer.val('');
-                alert(res);
+                swal(res);
             }else{
                 codeServer.val('');
                 sessionStorage.setItem('NamaServer', res);
@@ -103,7 +103,7 @@ $('#btn-logout-server').on('click', function(e){
         }),
         success: function(res){    
             if(res == 'UPDATE DROP'){
-                alert('LOGOUT GAGAL');
+                swal('LOGOUT GAGAL');
             }else{
                 sessionStorage.removeItem('NamaServer');
                 localStorage.removeItem('NamaServer')
@@ -130,7 +130,7 @@ $('#btn-input-server').on('click', function(e){
     profile = sessionStorage.getItem('NamaServer');
 
     if(name.val() == "" || visi.val() == "" || misi.val() == ""){
-        alert('Silahkan lengkapi terlebih dahulu');
+        swal('Silahkan lengkapi terlebih dahulu');
     }else{
         $.ajax({
             url:'/client/api',
@@ -162,7 +162,7 @@ $('#btn-input-server').on('click', function(e){
 
 $('#btn-add-client-img').on('click', function(e){
     e.preventDefault();
-    alert('Berhasil mengupload data mohon tunggu sampai terutup sendiri');
+    swal('Berhasil mengupload data mohon tunggu sampai terutup sendiri');
     var form = $('#frm-add-img')[0];
     var data = new FormData(form);
     data.append("Custom Field","This is some extra data, testing");
@@ -221,7 +221,7 @@ $('#btn-sigin-client').on('click', function(e){
         success: function(res){
             if(res == 'PLEASE INSERT YOUR SERVER CODE' || res == 'YOUR SERVER NOT AVALAIBLE' || res == 'YOUR SERVER NOT ACTIVATE' || res == 'ROW DROP'){
                 codeClient.val('');
-                alert(res);
+                swal(res);
             }else{
                 codeClient.val('');
                 localStorage.setItem("NamaServerClient", res);
@@ -256,7 +256,7 @@ $('#btn-check-code').on('click', function(e){
             }
         });
     }else{  
-        alert("Token not correct");
+        swal("Token not correct");
     }
 
 });
@@ -303,7 +303,7 @@ $('#btn-modal-vote').on('click', function(e){
         }),
         success:function(res){
             if(res == 'server null'){
-                alert(res);
+                swal(res);
             }else{
                 $('#txt-qtyvoter').val("");
                 let txt = $('#txt-qty-vot');
@@ -326,9 +326,9 @@ $('#btn-add-vot').on('click', function(e){
         }),
         success:function(res){
             if(res == 'Not below zero'){
-                alert(res);
+                swal(res);
             }else{
-                alert('Create successfully');
+                swal('Create successfully');
                 $.ajax({
                     url:'/server/api/getv',
                     method:'GET',
@@ -338,7 +338,7 @@ $('#btn-add-vot').on('click', function(e){
                     }),
                     success:function(res){
                         if(res == 'server null'){
-                            alert(res);
+                            swal(res);
                         }else{
                             $('#txt-qtyvoter').val("");
                             let txt = $('#txt-qty-vot');
@@ -356,7 +356,7 @@ $('#btn-export-vot').on('click', function(e){
     if(txt != "0" || txt != ""){
         window.open('/vot','_blank');
     }else{
-        alert('please specify in advance that many people can choose');
+        swal('please specify in advance that many people can choose');
     }
 });
 
@@ -373,7 +373,7 @@ function btn_del_profile(id){
         }),
         success: function(res){
           if(res == "DROP"){
-              alert('Gagal menghapus data kandidat');
+              swal('Gagal menghapus data kandidat');
           }else{
               window.location = '/dserv';
           }
@@ -397,7 +397,7 @@ function btn_del_profile(id){
           }),
           success: function(res){
               if(res == 'DROP'){
-                  alert('Gagal meload data lengkap kandidat');
+                  swal('Gagal meload data lengkap kandidat');
               }else{
                   var body = $('#body-vm');
                   body.html('');
@@ -430,7 +430,7 @@ function btn_del_profile(id){
           }),
           success: function(res){
               if(res == 'DROP'){
-                  alert('Gagal meload data lengkap kandidat');
+                  swal('Gagal meload data lengkap kandidat');
               }else{
                   var body = $('#body-edit');
                   body.html('');
@@ -464,9 +464,9 @@ function btn_del_profile(id){
           }),
           success: function(res){
               if(res == 'DROP'){
-                  alert('Gagal memilih');
+                  swal('Gagal memilih');
               }else{
-                  alert('Berhasil memilih');
+                  swal('Berhasil memilih');
                   window.location = '/';
               }
           }

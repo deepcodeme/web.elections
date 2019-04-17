@@ -188,6 +188,7 @@
 
     <script src="../js/source.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/swal.js"></script>
     <script>
 
       function loadServer(){
@@ -199,7 +200,6 @@
               nama_server : sessionStorage.getItem('NamaServer')  
             }),
             success: function(res){
-                console.log(' + Success to load dasboar server '+res);
                 var col = $('#row-body-kandidat');
                 col.html('');
                 res.forEach(function(row) {

@@ -295,12 +295,12 @@ $('#btn-modal-vote').on('click', function(e){
     var server  = sessionStorage.getItem('NamaServer');
     localStorage.setItem('NamaServer', server);
     $.ajax({
-        url:'/server/api/getv',
+        url:'/server/api/getv/'+server,
         method:'GET',
         contentType: 'application/json',
-        data: JSON.stringify({
-            serv:server,
-        }),
+        // data: JSON.stringify({
+        //     serv:server,
+        // }),
         success:function(res){
             if(res == 'server null'){
                 swal(res);

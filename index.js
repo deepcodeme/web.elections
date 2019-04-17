@@ -141,13 +141,13 @@ app.post('/server/api/svot', function(req, res){
     }
 });
 
-app.get('/server/api/getv', function(req, res){
-    let server = req.body.serv;
+app.get('/server/api/getv/:serv', function(req, res){
+    let server = req.params.serv;
     if(server != ""){
         mongo.connect(url, {useNewUrlParser:true}, mongoptions, function(err, konek){
             if(err) throw err;
             else{
-                konek.db('Pemilu').collection('Pemilih').countDocuments().then(function(banyakdata){
+                konek.db('Pemilu').collection('Pemilih').countDocuments({Server_Code: server}).then(function(banyakdata){
                     res.send((banyakdata).toString());
                 });
                 konek.close();

@@ -437,14 +437,14 @@ app.post('/client/api/ctkn', function(req, res){
                                     if(d._id == tkn){
                                         res.send(d._id);
                                     }else{
-                                        res.send({errod:'Token not avalaible'});
+                                        res.send('Token not avalaible');
                                     }
                                 }else{
-                                    res.send({error:'Server not avalaible'});
+                                    res.send('Server not avalaible');
                                 }
                             });
                         }else{
-                            res.send({error:'Empty'});
+                            res.send('Empty');
                         }
                     }
                 });

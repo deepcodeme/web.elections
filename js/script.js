@@ -464,7 +464,7 @@ function btn_del_profile(id){
               if(res == 'DROP'){
                 swal("Proooobblemm","Failed for choose, please try again", "error");
               }else{
-                swal("Proooobblemm","Succes choose your candidate, thanks :)", "success");
+                swal("Proooobblemm","Success choose your candidate, thanks :)", "success");
                   window.location = '/';
               }
           }

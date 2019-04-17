@@ -36,6 +36,10 @@ $('#btn-back-lgnc').on('click', function(e){
     window.location = '/';
 });
 
+$('#btn-cancel-code').on('click', function(e){
+    window.location = '/lclie';
+});
+
 $('#btn-create-signup-server').on('click', function(e){
     e.preventDefault();
     var NewServer = $('#txt-code-signup');

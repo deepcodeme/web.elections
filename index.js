@@ -40,34 +40,42 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function(req,res){
+    console.log("Access website --> main.html");    
     res.sendFile(__dirname+'/main.html');
 });
 
 app.get('/lserv', function(req, res){
+    console.log("Access website --> /server/login.html");
     res.sendFile(__dirname+'/server/login.html');
 });
 
 app.get('/lclie', function(req, res){
+    console.log("Access website --> /client/login.html");
     res.sendFile(__dirname+'/client/login.html');
 });
 
 app.get('/sserv', function(req, res){
+    console.log("Access website --> /server/signup.html");
     res.sendFile(__dirname+'/server/signup.html');
 });
 
 app.get('/dserv', function(req, res){
+    console.log("Access website --> /server/dashboard.html");
     res.sendFile(__dirname+'/server/dashboard.html');
 });
 
 app.get('/dclie', function(req,res){
+    console.log("Access website --> /client/choose.html");
     res.sendFile(__dirname+"/client/choose.html");
 });
 
 app.get('/vot', function(req, res){
+    console.log("Access website --> /server/vot.html");
     res.sendFile(__dirname+"/server/vot.html");
 });
 
 app.get('/cd', function(req,res){
+    console.log("Access website --> /client/code.html");
     res.sendFile(__dirname+"/client/code.html");
 });
 
@@ -554,12 +562,12 @@ app.put('/client/api/choose', function(req, res){
 });
 
 app.listen(8080, function(){
-    console.log('Server Start.');
+    console.log('Server Memulai.');
     console.log('SERVER : http://localhost:8080/');
     mongo.connect(url, {useNewUrlParser: true}, mongoptions , function(err){
-        if(err) console.log('Bad');
+        if(err) console.log('Koneksi database mengalami masalah :(\n');
         else{
-            console.log('Good');
+            console.log('Koneksi database terhubung dengan baik :)\n');
         }
     });
 });

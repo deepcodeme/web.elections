@@ -50,7 +50,7 @@ $('#btn-create-signup-server').on('click', function(e){
 
         success: function(res){
             if(res == "INSERT DROP" || res == "SERVER CODE IS ALREADY" || res == "PLEASE INSERT CODE SERVER FIRST"){
-                swal(res);
+                swal("Proooobblemm",res, "error");
                 $('#txt-code-signup').val('');
             }else{
                 $('#txt-code-signup').val('');  
@@ -74,7 +74,7 @@ $('#btn-signin-server').on('click', function(e){
         success: function(res){
             if(res== "PLEASE INSERT CODE SERVER FIRST" || res == "UPDATE DROP" || res == "SERVER CODE NOT AVAILABLE" || res == "CODE SERVER ALREADY ACTIVATE"){
                 codeServer.val('');
-                swal(res);
+                swal("Proooobblemm",res, "error");
             }else{
                 codeServer.val('');
                 sessionStorage.setItem('NamaServer', res);
@@ -103,7 +103,7 @@ $('#btn-logout-server').on('click', function(e){
         }),
         success: function(res){    
             if(res == 'UPDATE DROP'){
-                swal('LOGOUT GAGAL');
+                swal("Proooobblemm",res, "error");
             }else{
                 sessionStorage.removeItem('NamaServer');
                 localStorage.removeItem('NamaServer')
@@ -130,7 +130,7 @@ $('#btn-input-server').on('click', function(e){
     profile = sessionStorage.getItem('NamaServer');
 
     if(name.val() == "" || visi.val() == "" || misi.val() == ""){
-        swal('Silahkan lengkapi terlebih dahulu');
+        swal("Proooobblemm","Please insert first", "error");
     }else{
         $.ajax({
             url:'/client/api',
@@ -162,7 +162,7 @@ $('#btn-input-server').on('click', function(e){
 
 $('#btn-add-client-img').on('click', function(e){
     e.preventDefault();
-    swal('Berhasil mengupload data mohon tunggu sampai terutup sendiri');
+    swal("Goooooodddd jobbb","Successfully upload photo but wait second, ok?", "success");
     var form = $('#frm-add-img')[0];
     var data = new FormData(form);
     data.append("Custom Field","This is some extra data, testing");
@@ -177,7 +177,6 @@ $('#btn-add-client-img').on('click', function(e){
         cache: false,
         timeout: 600000,
         success: function(res){
-            console.log('SUCCESS');
             var name_file = $('#txt-file').val().replace(/.*(\/|\\)/, '');
             var name_param = sessionStorage.getItem('param-add-img-client');
             $.ajax({
@@ -199,7 +198,7 @@ $('#btn-add-client-img').on('click', function(e){
             });
         },
         error: function(res){
-            console.log('ERROR');
+            
         }
     });
 });
@@ -221,7 +220,7 @@ $('#btn-sigin-client').on('click', function(e){
         success: function(res){
             if(res == 'PLEASE INSERT YOUR SERVER CODE' || res == 'YOUR SERVER NOT AVALAIBLE' || res == 'YOUR SERVER NOT ACTIVATE' || res == 'ROW DROP'){
                 codeClient.val('');
-                swal(res);
+                swal("Proooobblemm",res, "error");
             }else{
                 codeClient.val('');
                 localStorage.setItem("NamaServerClient", res);
@@ -247,6 +246,7 @@ $('#btn-check-code').on('click', function(e){
             }),
             success: function(res){
                 if(res == "Empty" || res == "Server not avalaible" || res == "Token not avalaible"){
+                    swal("Proooobblemm",res, "error");
                     $('#txt-token').val('');
                 }else{
                     $('#txt-token').val('');
@@ -256,7 +256,7 @@ $('#btn-check-code').on('click', function(e){
             }
         });
     }else{  
-        swal("Token not correct");
+        swal("Proooobblemm","Server not correct", "error");
     }
 
 });
@@ -282,7 +282,7 @@ $('#btn-edit-profile').on('click', function(e){
             upm:upm
         }),
         success: function(res){
-            if(res == "DROP") console.log('DROP');
+            if(res == "DROP") swal("Proooobblemm",res, "error");
             else{
                 sessionStorage.removeItem('id');
                 window.location = '/dserv';
@@ -298,12 +298,10 @@ $('#btn-modal-vote').on('click', function(e){
         url:'/server/api/getv/'+server,
         method:'GET',
         contentType: 'application/json',
-        // data: JSON.stringify({
-        //     serv:server,
-        // }),
+
         success:function(res){
             if(res == 'server null'){
-                swal(res);
+                swal("Proooobblemm",res, "error");
             }else{
                 $('#txt-qtyvoter').val("");
                 let txt = $('#txt-qty-vot');
@@ -326,7 +324,7 @@ $('#btn-add-vot').on('click', function(e){
         }),
         success:function(res){
             if(res == 'Not below zero'){
-                swal(res);
+                swal("Proooobblemm",res, "error");
             }else{
                 swal('Create successfully');
                 $.ajax({
@@ -338,7 +336,7 @@ $('#btn-add-vot').on('click', function(e){
                     }),
                     success:function(res){
                         if(res == 'server null'){
-                            swal(res);
+                            swal("Proooobblemm",res, "error");
                         }else{
                             $('#txt-qtyvoter').val("");
                             let txt = $('#txt-qty-vot');
@@ -356,7 +354,7 @@ $('#btn-export-vot').on('click', function(e){
     if(txt != "0" || txt != ""){
         window.open('/vot','_blank');
     }else{
-        swal('please specify in advance that many people can choose');
+        swal("Proooobblemm","Please check your voter avalaible", "error");
     }
 });
 
@@ -373,7 +371,7 @@ function btn_del_profile(id){
         }),
         success: function(res){
           if(res == "DROP"){
-              swal('Gagal menghapus data kandidat');
+            swal("Proooobblemm","Failed for delete ", "error");
           }else{
               window.location = '/dserv';
           }
@@ -397,7 +395,7 @@ function btn_del_profile(id){
           }),
           success: function(res){
               if(res == 'DROP'){
-                  swal('Gagal meload data lengkap kandidat');
+                swal("Proooobblemm","Failed for load all profile candidate", "error");
               }else{
                   var body = $('#body-vm');
                   body.html('');
@@ -430,7 +428,7 @@ function btn_del_profile(id){
           }),
           success: function(res){
               if(res == 'DROP'){
-                  swal('Gagal meload data lengkap kandidat');
+                swal("Proooobblemm","Failed load all profile candidate", "error");
               }else{
                   var body = $('#body-edit');
                   body.html('');
@@ -464,9 +462,9 @@ function btn_del_profile(id){
           }),
           success: function(res){
               if(res == 'DROP'){
-                  swal('Gagal memilih');
+                swal("Proooobblemm","Failed for choose, please try again", "error");
               }else{
-                  swal('Berhasil memilih');
+                swal("Proooobblemm","Succes choose your candidate, thanks :)", "success");
                   window.location = '/';
               }
           }

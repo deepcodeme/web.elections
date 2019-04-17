@@ -23,7 +23,8 @@ $('#btn-signup-server').on('click', function(e){
     window.location = '/sserv';
 });
 
-$('#btn-back-signup').on('click', function(e){
+$('#btn-back-login').on('click', function(e){
+    e.preventDefault();
     window.location = '/lserv';
 });
 

@@ -455,6 +455,27 @@ app.post('/client/api/ctkn', function(req, res){
     }
 });
 
+app.delete('/client/api/dvot', function(req, res){
+    
+    var tkn = req.body.tkn;
+
+    var hapus = {
+        _id: new ObjectId(tkn),
+    }
+
+    mongo.connect(url, {useNewUrlParser: true}, mongoptions, function(err, konek){
+        if(err) throw err;
+        else{
+            konek.db('Pemilu').collection('Pemilih').deleteOne(hapus, function(err){
+                if(err) throw err;
+                else{
+                    res.send('Berhasil');
+                }
+            });
+        }
+    });
+});
+
 app.post('/client/api/in', function(req, res){
     var reqdataServer = req.body.dataClient;
     

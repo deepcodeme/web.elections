@@ -453,9 +453,32 @@ function btn_del_profile(id){
       });
   }
 
+  function hapus_voter(){
+    
+      var tkn = localStorage.getItem('Token');
+
+      $.ajax({
+        url:'/client/api/dvot',
+        method: 'DELETE',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            tkn:tkn,
+        }),
+        
+        success: function(res){
+            if(res == "Berhasil"){
+                console.log("Status pemilihan --> Clear");
+            }else{
+                console.log("Status pemilihan --> Error");
+            }
+        }
+        
+      });
+  }
+
   function btn_choose(id){
-      id = id;  
-      serv = localStorage.getItem('NamaServerClient');
+      var id = id;  
+      var serv = localStorage.getItem('NamaServerClient');
       $.ajax({
           url: '/client/api/choose',
           method: 'PUT',
@@ -468,8 +491,9 @@ function btn_del_profile(id){
               if(res == 'DROP'){
                 swal("Proooobblemm","Failed for choose, please try again", "error");
               }else{
+                hapus_voter();
                 swal("Proooobblemm","Success choose your candidate, thanks :)", "success");
-                  window.location = '/';
+                window.location = '/';
               }
           }
       })

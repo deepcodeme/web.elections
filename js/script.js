@@ -456,6 +456,7 @@ function btn_del_profile(id){
   function hapus_voter(){
     
       var tkn = localStorage.getItem('Token');
+      var sta;
 
       $.ajax({
         url:'/client/api/dvot',
@@ -468,6 +469,7 @@ function btn_del_profile(id){
         success: function(res){
             if(res == "Berhasil"){
                 console.log("Status pemilihan --> Clear");
+                localStorage.removeItem('Token');
             }else{
                 console.log("Status pemilihan --> Error");
             }
@@ -488,12 +490,17 @@ function btn_del_profile(id){
               serv:serv
           }),
           success: function(res){
+              
               if(res == 'DROP'){
+                
                 swal("Proooobblemm","Failed for choose, please try again", "error");
+
               }else{
+                
                 hapus_voter();
-                swal("Proooobblemm","Success choose your candidate, thanks :)", "success");
+                swal("Gooood joobbb","Success choose your candidate, thanks :)", "success");
                 window.location = '/';
+                
               }
           }
       })

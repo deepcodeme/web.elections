@@ -151,6 +151,7 @@ app.post('/server/api/svot', function(req, res){
 
 app.get('/server/api/getv/:serv', function(req, res){
     let server = req.params.serv;
+    console.log(server);
     if(server != ""){
         mongo.connect(url, {useNewUrlParser:true}, mongoptions, function(err, konek){
             if(err) throw err;

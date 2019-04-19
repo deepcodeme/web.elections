@@ -166,7 +166,9 @@ $('#btn-input-server').on('click', function(e){
 
 $('#btn-add-client-img').on('click', function(e){
     e.preventDefault();
-    swal("Goooooodddd jobbb","Successfully upload photo but wait second, ok?", "success");
+    
+    alert("Goooodd joobbbb", "Success upload photo please wait second");
+
     var form = $('#frm-add-img')[0];
     var data = new FormData(form);
     data.append("Custom Field","This is some extra data, testing");
@@ -330,14 +332,13 @@ $('#btn-add-vot').on('click', function(e){
             if(res == 'Not below zero'){
                 swal("Proooobblemm",res, "error");
             }else{
-                swal('Create successfully');
+                
                 $.ajax({
-                    url:'/server/api/getv',
+                    
+                    url:'/server/api/getv/'+server,
                     method:'GET',
                     contentType: 'application/json',
-                    data: JSON.stringify({
-                        serv:server,
-                    }),
+                    
                     success:function(res){
                         if(res == 'server null'){
                             swal("Proooobblemm",res, "error");
@@ -347,6 +348,7 @@ $('#btn-add-vot').on('click', function(e){
                             txt.html(res);
                         }
                     }
+
                 });
             }
         }
@@ -490,7 +492,7 @@ function btn_del_profile(id){
               serv:serv
           }),
           success: function(res){
-              
+
               if(res == 'DROP'){
                 
                 swal("Proooobblemm","Failed for choose, please try again", "error");

@@ -167,7 +167,7 @@ $('#btn-input-server').on('click', function(e){
 $('#btn-add-client-img').on('click', function(e){
     e.preventDefault();
     
-    alert("Goooodd joobbbb", "Success upload photo please wait second");
+    alert("Success upload photo please wait second");
 
     var form = $('#frm-add-img')[0];
     var data = new FormData(form);

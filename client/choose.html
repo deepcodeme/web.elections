@@ -5,24 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Choose your candidate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="../css/main.css"> -->
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
   <div class="container">
-    <a class="navbar-brand" href="#">ELECTION</a>
+    <a class="navbar-brand" style="cursor: pointer;">ELECTION</a>
   </div>
 </nav>
-
 <div class="container">
-    <div class="row" id="content-choose-kandidat">  
-                  
+    <div class="row" id="content-choose-kandidat">              
     </div>
 </div>
-
 <div class="modal fade" id="Modalvm2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -32,8 +27,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="body-vm">
-        
+      <div class="modal-body" id="body-vm">      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -41,46 +35,56 @@
     </div>
   </div>
 </div>
-    
 <script src="../js/source.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/swal.js"></script>
 <script src="../js/script.js"></script>  
 <script>
-
-        function loadClient(){
-        $.ajax({
-            url: '/server/api/load',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                nama_server: localStorage.getItem('NamaServerClient')
-            }),
-            success: function(res){
-                var listkandidat = $('#content-choose-kandidat');
-                listkandidat.html('');
-
-                res.forEach(function(row) {
-                    listkandidat.append('\
-                      <div id="col-body" class="col-md-4 mb-4 mt-4">\
-                        <div class="card">\
-                          <img src="../upload/'+row.Foto+'" class="card-img-top" alt="...">\
-                          <div class="card-body">\
-                            <h5 class="card-title">'+row.Nama+'</h5>\
-                            <a href="#" class="btn btn-primary" onclick="btn_choose(\''+row._id+'\')">Choose</a>\
-                            <a href="#" class="btn btn-light" data-toggle="modal" data-target="#Modalvm2" onclick="btn_more_profile(\''+row._id+'\')">...</a>\
-                          </div>\
-                        </div>\
-                      </div>\
-                    ');
-                });
-            }
+  function loadClient(){
+    $.ajax({
+      url: '/server/api/load',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        nama_server: localStorage.getItem('NamaServerClient')
+      }),
+      success: function(res){
+        var listkandidat = $('#content-choose-kandidat');
+        listkandidat.html('');
+        res.forEach(function(row) {
+          listkandidat.append('\
+            <div id="col-body" class="col-md-4 mb-4 mt-4">\
+            <div class="card">\
+            <img src="../upload/'+row.Foto+'" class="card-img-top" alt="...">\
+            <div class="card-body">\
+            <h5 class="card-title">'+row.Nama+'</h5>\
+            <a href="#" class="btn btn-primary" onclick="btn_choose(\''+row._id+'\')">Choose</a>\
+            <a href="#" class="btn btn-light" data-toggle="modal" data-target="#Modalvm2" onclick="btn_more_profile(\''+row._id+'\')">...</a>\
+            </div>\
+            </div>\
+            </div>\
+          ');
         });
-        }
-
-        $( window).on('load', function(e){
-            loadClient();
-        });
-    </script>  
+      }
+    });
+  }
+  $( window).on('load', function(e){
+    if
+    (localStorage.getItem('nsc') == null || localStorage.getItem('nsc') == undefined &&
+     localStorage.getItem('tkn') == null || localStorage.getItem('tkn') == undefined
+    ){
+      window.location = "/lclie";
+    }
+    else if
+    (localStorage.getItem('nsc') != null || localStorage.getItem('nsc') != undefined &&
+     localStorage.getItem('tkn') == null || localStorage.getItem('tkn') == undefined
+    ){
+      window.location = "/cd";
+    }
+    else{
+      loadClient();
+    }
+  });
+</script>  
 </body>
 </html>

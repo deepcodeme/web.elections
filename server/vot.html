@@ -9,33 +9,31 @@
 </head>
 <body>
     <div class="container">
-        <div id="body-vot">
+        <div id="body-vot" style="font-size:25px;">
             
         </div>
     </div>
     <script src="../js/source.js"></script>
     <script src="../js/swal.js"></script>
     <script>
-        $(window).on('load', function(e){
+        function loadvot(){
             $.ajax({
-                url:'/server/api/svot',
-                method: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    serv: localStorage.getItem('NamaServer'),
-                }),
+                url         : '/server/api/svot',
+                method      : 'POST',
+                contentType : 'application/json',
+                data        :  JSON.stringify({ serv: localStorage.getItem('ns'),}),
                 success:function(res){
                     if(res == "drop" || res == "bug" || res == "empty"){
                         alert(res);
                     }else{
-                        let bodyvot = $('#body-vot');
+                        var bodyvot = $('#body-vot');
                         bodyvot.html('');
                         res.forEach(function(row) {
                             bodyvot.append('\
                             <ul class="list-group mt-5">\
                                 <li class="list-group-item">'+row._id+'</li>\
                             </ul>\
-                            '                     
+                            '                  
                             );
                         });
                         window.print();
@@ -43,6 +41,13 @@
                     }
                 }
             });
+        }
+        $(window).on('load', function(e){
+            if(localStorage.getItem('ns') == null || localStorage.getItem('ns') == ""){
+                window.location = 'lserv';
+            }else{
+                loadvot();
+            }   
         });
     </script>
 </body>

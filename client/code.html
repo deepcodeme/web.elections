@@ -29,7 +29,11 @@
     <script src="../js/script.js"></script>
     <script>
         $(window).on('load', function(e){
-            $('#txt-server').val(localStorage.getItem('NamaServerClient'));
+            if(localStorage.getItem('nsc') == null || localStorage.getItem('nsc') == undefined){
+                window.location = '/lclie';
+            }else{
+                $('#txt-server').val(localStorage.getItem('nsc'));
+            }
         });
     </script>
 </body>

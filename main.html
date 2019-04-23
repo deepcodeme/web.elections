@@ -95,15 +95,33 @@
     <script type="text/javascript" src="./js/source.js"></script>
     <script>
         $(window).on('load', function(e){
-            
-            if(localStorage.getItem('NamaServer') != null && localStorage.getItem('param-add-img-client') == null){
-                sessionStorage.setItem('NamaServer', localStorage.getItem('NamaServer'));
-                window.location = "/dserv";
+            if(localStorage.getItem('ns') == null || localStorage.getItem('ns') == undefined &&
+               localStorage.getItem('nsc') == null || localStorage.getItem('nsc') == undefined &&
+               localStorage.getItem('tkn') == null || localStorage.getItem('tkn') == undefined
+            ){
+                
+            }else if
+            (
+               localStorage.getItem('ns') != null || localStorage.getItem('ns') != undefined &&
+               localStorage.getItem('nsc') == null || localStorage.getItem('nsc') == undefined &&
+               localStorage.getItem('tkn') == null || localStorage.getItem('tkn') == undefined
+            ){
+                window.location = '/dserv';
+            }else if
+            (
+               localStorage.getItem('ns') == null || localStorage.getItem('ns') == undefined &&
+               localStorage.getItem('nsc') != null || localStorage.getItem('nsc') != undefined &&
+               localStorage.getItem('tkn') != null || localStorage.getItem('tkn') != undefined
+            ){
+                window.location = '/dclie';
             }
-            else if(localStorage.getItem('NamaServer') != null && localStorage.getItem('param-add-img-client') != null){
-                sessionStorage.setItem('NamaServer', localStorage.getItem('NamaServer'));
-                sessionStorage.setItem('param-add-img-client', localStorage.getItem('param-add-img-client'))
-                window.location = "/dserv";
+            else if
+            (
+               localStorage.getItem('ns') == null || localStorage.getItem('ns') == undefined &&
+               localStorage.getItem('nsc') != null || localStorage.getItem('nsc') != undefined &&
+               localStorage.getItem('tkn') == null || localStorage.getItem('tkn') == undefined
+            ){
+                window.location = '/cd';
             }
         });
     </script>

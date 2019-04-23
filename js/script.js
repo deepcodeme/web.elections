@@ -125,9 +125,12 @@ $('#btn-add-client-img').on('click', function(e){
                 $.ajax({
                     url:'/client/api/u',
                     method:'POST',
-                    enctype:'multipart/form-data',
-                    contentType:false,
-                    data:data,
+                    enctype: 'multipart/form-data',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    timeout: 600000,
                     success:function(res){
                         if(res == "Success send file photo."){
                            localStorage.removeItem("Nama-candidate");

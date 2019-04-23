@@ -46,7 +46,7 @@
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({
-        nama_server: localStorage.getItem('NamaServerClient')
+        nama_server: localStorage.getItem('nsc')
       }),
       success: function(res){
         var listkandidat = $('#content-choose-kandidat');
@@ -70,18 +70,18 @@
   }
   $( window).on('load', function(e){
     if
-    (localStorage.getItem('nsc') == null || localStorage.getItem('nsc') == undefined &&
-     localStorage.getItem('tkn') == null || localStorage.getItem('tkn') == undefined
+    (localStorage.getItem('nsc') == null  &&
+     localStorage.getItem('tkn') == null 
     ){
       window.location = "/lclie";
     }
     else if
-    (localStorage.getItem('nsc') != null || localStorage.getItem('nsc') != undefined &&
-     localStorage.getItem('tkn') == null || localStorage.getItem('tkn') == undefined
+    (localStorage.getItem('nsc') != null &&
+     localStorage.getItem('tkn') == null 
     ){
       window.location = "/cd";
     }
-    else{
+    else {
       loadClient();
     }
   });

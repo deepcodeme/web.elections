@@ -80,9 +80,9 @@ $('#btn-input-server').on('click', function(e){
     if(name.val() == "" || visi.val() == "" || misi.val() == ""){
         swal("Proooobblemm","Please insert first", "error");
     }else{
-        localStorage.setItem('Nama-candidate',name);
-        localStorage.setItem('Visi-candidate',visi);
-        localStorage.setItem('Misi-candidate',misi);
+        localStorage.setItem('Nama-candidate',name.val());
+        localStorage.setItem('Visi-candidate',visi.val());
+        localStorage.setItem('Misi-candidate',misi.val());
         $('#Modal-Img').css('overflow-y', 'auto');
         $('#Modal-Img').modal('show');
         $('#Modaladd').modal('hide');
@@ -295,16 +295,16 @@ function btn_more_profile(id){
             if(res == 'Failed to return data profile candidate'){
               swal("Proooobblemm","Failed load all profile candidate", "error");
             }else{
-                var body = $('#body-edit');
+                var body = $('#body-vm');
                 body.html('');
                 res.forEach(function(row){
                     body.append('\
                       <label class="text-secondary">Name</label>\
-                      <input type="text" id="txt-nama-e" class="form-control mb-2" value="'+row.Nama+'">\
+                      <input type="text" id="txt-nama-e" class="form-control mb-2" readonly value="'+row.Nama+'">\
                       <label class="text-secondary">Vision</label>\
-                      <textarea id="txt-visi-e" class="form-control" required>'+row.Visi+'</textarea>\
+                      <textarea id="txt-visi-e" class="form-control" readonly>'+row.Visi+'</textarea>\
                       <label class="text-secondary">Mision</label>\
-                      <textarea id="txt-misi-e" class="form-control" required>'+row.Misi+'</textarea>\
+                      <textarea id="txt-misi-e" class="form-control" readonly>'+row.Misi+'</textarea>\
                     ');
                 });
             }
@@ -370,13 +370,14 @@ $('#btn-check-code').on('click', function(e){
                 (res == "Failed to return data voter." ||
                  res == "Code Token not avalaible." ||
                  res == "Code token not suitable with your server code." ||
-                 res == "Your server not have voter, confirm to server."
+                 res == "Your server not have voter, confirm to server." ||
+                 res == "Your server not activate please check."
                 ){
                     swal("Proooobblemm",res, "error");
                     $('#txt-token').val('');
                 }else{
-                    $('#txt-token').val('');
                     localStorage.setItem('tkn', res);
+                    $('#txt-token').val('');
                     window.location = '/dclie';
                 }
             }
@@ -388,14 +389,14 @@ $('#btn-cancel-code').on('click', function(e){
 });
 function btn_choose(id){
     var id   = id;  
-    var serv = localStorage.getItem('ncs');
+    var serv = localStorage.getItem('nsc');
     $.ajax({
         url        : '/client/api/choose',
         method     : 'PUT',
         contentType: 'application/json',
         data       :  JSON.stringify({id:id,serv:serv}),
         success: function(res){
-            if(res == 'Success'){
+            if(res == "Success"){
               swal("Gooood joobbb","Success choose your candidate, thanks :)", "success");
               hapus_voter();
             }else{
@@ -412,7 +413,7 @@ function hapus_voter(){
         contentType: 'application/json',
         data       :  JSON.stringify({tkn:tkn,}),
         success    :  function(res){
-            if(res == "Berhasil"){
+            if(res == "Success"){
                 localStorage.removeItem('nsc');
                 localStorage.removeItem('tkn');
                 window.location = '/lclie';

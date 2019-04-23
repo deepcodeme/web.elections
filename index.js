@@ -4,9 +4,7 @@ var mv = require('mv');
 var fmdb = require('formidable');
 var mongo = require('mongodb');
 var ObjectId = require('mongodb').ObjectID;
-
 var app = express();
-
 const mongoptions = {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -20,9 +18,7 @@ const mongoptions = {
     socketTimeoutMS: 45000,
     family: 4 
 };
-
 var url = 'mongodb://127.0.0.1:27017/Pemilu';
-
 app.use(express.static(__dirname));
 app.use(bp.json());
 app.use(function(req, res, next){
@@ -31,10 +27,6 @@ app.use(function(req, res, next){
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTION');
     next();
 });
-
-
-
-
 app.get('/', function(req,res){
     console.log("Access website --> main.html");    
     res.sendFile(__dirname+'/main.html');
@@ -502,27 +494,36 @@ app.post('/client/api/ctkn', function(req, res){
             console.log("Explain Problem--> System connection mongodb broke, please check");
         }
         else{
-            konek.db('Pemilu').collection('Pemilih').find(select).toArray(function(err, row){
+            konek.db('Pemilu').collection('Server').find({Server_Code:serv}).toArray(function(err, row){
                 if(err){
-                    console.log("Website --> Failed to return data voter.");
+                    console.log("Website --> Failed to return data server.");
                     console.log("API --> /client/api/ctkn");
                     console.log("Explain Problem--> You have problem in syntax function 'find', please check");
-                    res.send("Failed to return data voter.");
-                }
-                else{
-                    if(row != ""){
-                        row.forEach(function(d){
-                            if(d.Status == "on"){
-                                if(d.Server_Code == serv){
-                                    if(d._id == tkn){res.send(d._id);}
-                                    else{res.send('Code Token not avalaible.');}
-                                }else{res.send('Code token not suitable with your server code.');}
-                            }
-                            else{
-                                res.send("Your server not activate please chack your server.");
-                            }
-                        });
-                    }else{res.send('Your server not have voter, confirm to server.');}
+                }else{
+                    row.forEach(function(d){
+                        if(d.Status == 'on'){
+                            konek.db('Pemilu').collection('Pemilih').find(select).toArray(function(err, row){
+                                if(err){
+                                    console.log("Website --> Failed to return data voter.");
+                                    console.log("API --> /client/api/ctkn");
+                                    console.log("Explain Problem--> You have problem in syntax function 'find', please check");
+                                    res.send("Failed to return data voter.");
+                                }
+                                else{
+                                    if(row != ""){
+                                        row.forEach(function(d){
+                                            if(d.Server_Code == serv){
+                                                if(d._id == tkn){res.send(d._id);}
+                                                else{res.send('Code Token not avalaible.');}
+                                            }else{res.send('Code token not suitable with your server code.');}
+                                        });
+                                    }else{res.send('Your server not have voter, confirm to server.');}
+                                }
+                            });
+                        }else{
+                            res.send("Your server not activate please check.");
+                        }
+                    });
                 }
             });
         }
@@ -547,7 +548,7 @@ app.get('/cd', function(req,res){
 app.put('/client/api/choose', function(req, res){
     var reqid   = req.body.id;
     var reqserv = req.body.serv;
-    var param = {_id: new ObjectId(reqid),Server_Code: reqserv};
+    var param = {_id: new ObjectId(reqid), Server_Code: reqserv};
     mongo.connect(url, {useNewUrlParser: true}, mongoptions, function(err, konek){
         if(err){
             console.log("Website --> Connection mongodb broke.");
@@ -555,33 +556,43 @@ app.put('/client/api/choose', function(req, res){
             console.log("Explain Problem--> System connection mongodb broke, please check");
         }
         else{
-            konek.db('Pemilu').collection('Kandidat').find(param).toArray(function(err,row){
+            konek.db('Pemilu').collection('Server').find({Server_Code:reqserv}).toArray(function(err, row){
                 if(err){
-                    console.log("Website --> Failed to return data voter.");
+                    console.log("Website --> Failed to return data server.");
                     console.log("API --> /client/api/choose");
                     console.log("Explain Problem--> You have problem in syntax function 'find', please check");
-                }
-                else{
-                    if(row != ''){
-                        row.forEach(function(d){
-                            if(d.Status == "on"){
-                                var update = {$set:{ Total: d.Total + 1}}
-                                konek.db('Pemilu').collection('Kandidat').updateMany(param, update, function(err){
+                }else{
+                    row.forEach(function(d){
+                        if(d.Status == 'on'){
+                            konek.db('Pemilu').collection('Kandidat').find(param).toArray(function(err,row){
                                 if(err){
-                                    res.send("Failed to choose candidate please try again.");
+                                    console.log("Website --> Failed to return data voter.");
+                                    console.log("API --> /client/api/choose");
+                                    console.log("Explain Problem--> You have problem in syntax function 'find', please check");
                                 }
                                 else{
-                                    res.send('Success');
+                                    if(row != ''){
+                                        row.forEach(function(d){
+                                            var update = {$set:{ Total: d.Total + 1}}
+                                            konek.db('Pemilu').collection('Kandidat').updateMany(param, update, function(err){
+                                            if(err){
+                                                res.send("Failed to choose candidate please try again.");
+                                            }
+                                            else{
+                                                res.send('Success');
+                                            }
+                                            konek.close();
+                                            });
+                                        });
+                                    }else{
+                                        res.send('Your token code not suitable.');
+                                    }
                                 }
-                                konek.close();
                             });
-                            }else{
-                                res.send("Your server not activate please check your server.");
-                            }
-                        });
-                    }else{
-                        res.send('Your token code not suitable.');
-                    }
+                        }else{
+                            res.send("Your server system not activate please check your server.");
+                        }
+                    });
                 }
             });
         }

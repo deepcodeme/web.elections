@@ -5,7 +5,7 @@ with this project all school can saving money for another event.
 
 and with this project all school can feel changes using technology in the surrounding activities.
 
-#install
+# install
 
 for install you can download this project or clone this with your git
 

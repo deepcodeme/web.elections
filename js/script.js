@@ -299,12 +299,10 @@ function btn_more_profile(id){
                 body.html('');
                 res.forEach(function(row){
                     body.append('\
-                      <label class="text-secondary">Name</label>\
-                      <input type="text" id="txt-nama-e" class="form-control mb-2" readonly value="'+row.Nama+'">\
-                      <label class="text-secondary">Vision</label>\
-                      <textarea id="txt-visi-e" class="form-control" readonly>'+row.Visi+'</textarea>\
-                      <label class="text-secondary">Mision</label>\
-                      <textarea id="txt-misi-e" class="form-control" readonly>'+row.Misi+'</textarea>\
+                    <label class="text-secondary">Vision</label>\
+                    <textarea class="form-control text-left" style = "height: 75px;" readonly>'+row.Visi+'</textarea>\
+                    <label class="text-secondary">Mision</label>\
+                    <textarea class="form-control text-left" style = "height: 75px;" readonly>'+row.Misi+'</textarea>\
                     ');
                 });
             }

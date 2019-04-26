@@ -219,7 +219,7 @@ $('#btn-logout-server').on('click', function(e){
 });
 function btn_edit_profile(id){
     var id   = id;
-    localStorage.setItem('id', id);
+    sessionStorage.setItem('id', id);
     var serv = localStorage.getItem('ns');
     $.ajax({
         url: '/server/api/is',
@@ -250,7 +250,7 @@ function btn_edit_profile(id){
     });
 }
 $('#btn-edit-profile').on('click', function(e){ 
-    var id   = localStorage.getItem('id');
+    var id   = sessionStorage.getItem('id');
     var serv = localStorage.getItem('ns');
     var upn  = $('#txt-nama-e').val();
     var upv  = $('#txt-visi-e').val();
@@ -266,7 +266,7 @@ $('#btn-edit-profile').on('click', function(e){
             if(res == "Success")
             {
                 swal("Gooooodd jooobb","Success edit profile candidate ", "success");
-                localStorage.removeItem('id');
+                sessionStorage.removeItem('id');
                 window.location = '/dserv';
             }
             else{

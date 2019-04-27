@@ -22,5 +22,14 @@
     <script src="../js/source.js"></script>
     <script src="../js/swal.js"></script>
     <script src="../js/script.js"></script>
+    <script>
+        $(window).on('load', function(e){
+            if(localStorage.getItem('ns') != null){
+                window.location = '/dserv';
+            }else if(localStorage.getItem('nsc') != null){
+                window.location = '/dclie';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -70,7 +70,7 @@ $('#btn-back-login').on('click', function(e){
 });
 $('#btn-modal-profile').on('click', function(e){
     var profile = localStorage.getItem('ns');
-    swal(profile, "Name server", "info");
+    swal(profile, "name server", "success");
 });
 $('#btn-input-server').on('click', function(e){
     var name,visi,misi,profile; 

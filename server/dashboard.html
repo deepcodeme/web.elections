@@ -21,16 +21,17 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
       <div class="container">
-        <a class="navbar-brand">Elections app</a>
+        <a class="navbar-brand">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav" style="cursor: pointer;">
-            <a class="nav-item nav-link active"  id="btn-modal-profile">Server info</a>
-            <a class="nav-item nav-link active"  data-toggle="modal" data-target="#Modaladd">Candidate</a>
-            <a class="nav-item nav-link active"  data-toggle="modal" data-target="#Modalvote" id="btn-modal-vote">Voter</a>
-            <a class="nav-item nav-link active"  id="btn-logout-server">Exit</a>
+            <a class="nav-item nav-link text-info"  id="btn-modal-profile">Server</a>
+            <a class="nav-item nav-link"  data-toggle="modal" data-target="#Modaladd">Candidate</a>
+            <a class="nav-item nav-link"  data-toggle="modal" data-target="#Modalvote" id="btn-modal-vote">Voter</a>
+            <a class="nav-item nav-link"  id="btn-logout-server">Exit</a>
           </div>
         </div>
       </div>
@@ -181,9 +182,9 @@
                       <div class="card-body">\
                         <h5 class="card-title">'+row.Nama+'</h5>\
                         <p class="card-text txt-sea">'+row.Total+'<span> support people</span></p>\
-                        <a href="#" class="btn btn-dark" data-toggle="modal" data-target="#Modaledit" onclick="btn_edit_profile(\''+row._id+'\')">Edit</a>\
-                        <a href="#" class="btn btn-secondary"  onclick="btn_del_profile(\''+row._id+'\')">Delete</a>\
-                        <a href="#" class="btn btn-light" data-toggle="modal" data-target="#Modalvm" onclick="btn_more_profile(\''+row._id+'\')">....</a>\
+                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Modaledit" onclick="btn_edit_profile(\''+row._id+'\')">Edit</a>\
+                        <a href="#" class="btn btn-danger"  onclick="btn_del_profile(\''+row._id+'\')">Delete</a>\
+                        <a href="#" class="btn btn-link" data-toggle="modal" data-target="#Modalvm" onclick="btn_more_profile(\''+row._id+'\')">....</a>\
                       </div>\
                     </div>\
                   </div>\

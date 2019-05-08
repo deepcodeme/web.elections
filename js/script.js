@@ -204,7 +204,7 @@ $('#btn-logout-server').on('click', function(e){
     var server_name = localStorage.getItem('ns');
     $.ajax({
         url        : '/server/api/out',
-        method     : 'POST',
+        method     : 'PUT',
         contentType: 'application/json',
         data       :  JSON.stringify({code: server_name}),
         success: function(res){    
@@ -223,7 +223,7 @@ function btn_edit_profile(id){
     var serv = localStorage.getItem('ns');
     $.ajax({
         url: '/server/api/is',
-        method: 'POST',
+        method: 'GET',
         contentType: 'application/json',
         data: JSON.stringify({
             id:id,
@@ -285,7 +285,7 @@ function btn_more_profile(id){
     }
     $.ajax({
         url: '/server/api/is',
-        method: 'POST',
+        method: 'GET',
         contentType: 'application/json',
         data: JSON.stringify({
             id:id,

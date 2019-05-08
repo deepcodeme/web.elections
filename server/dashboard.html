@@ -156,12 +156,9 @@
       function loadServer(){
         var col = $('#row-body-kandidat');
         $.ajax({
-            url: '/server/api/load',
-            method: 'POST',
+            url: '/server/api/load/'+localStorage.getItem('ns'),
+            method: 'GET',
             contentType: 'application/json',
-            data: JSON.stringify({
-              nama_server : localStorage.getItem('ns')  
-            }),
             success: function(res){
                 if(res == ""){
                   col.html('');

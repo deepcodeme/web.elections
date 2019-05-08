@@ -19,7 +19,7 @@
         function loadvot(){
             $.ajax({
                 url         : '/server/api/svot',
-                method      : 'POST',
+                method      : 'GET',
                 contentType : 'application/json',
                 data        :  JSON.stringify({ serv: localStorage.getItem('ns'),}),
                 success:function(res){
